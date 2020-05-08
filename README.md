@@ -1,8 +1,12 @@
 # Sergio
 A robust static file server, written in F# using Kestrel
 
+## Getting Started
+
+Assuming binary is available in your PATH and named `sergio.exe`:
+
 ```
-USAGE: Sergio [--help] [--listener <string> <int>] [--log-level <int>] [--gzip <bool>] <path>
+USAGE: sergio [--help] [--listener <string> <int>] [--log-level <int>] [--gzip <bool>] <path>
 
 ROOT:
 
