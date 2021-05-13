@@ -16,7 +16,7 @@ with
             match s with
             | Root _      -> "specify a working directory"
             | Listener _  -> "specify a listener (ex: --listener localhost 5001)"
-            | Log_Level _ -> "set the log level (default = LogLevel.Information)"
+            | Log_Level _ -> "set the log level (default = LogLevel.Error)"
             | GZip _      -> "enable gzip compress (default = False)"
     
 [<EntryPoint>]
@@ -38,7 +38,7 @@ let main argv =
         let listener = results.GetResult (Listener, defaultValue = ("*", 8080))
         let url = listener |> fun (l, p) -> sprintf "https://%s:%i" l p
           
-        let logLevel = results.GetResult (Log_Level, defaultValue = 2)
+        let logLevel = results.GetResult (Log_Level, defaultValue = 4)
         let configureLog =
             fun (log : ILoggingBuilder) ->
                 log.SetMinimumLevel(LogLevel.ToObject(typedefof<LogLevel>, logLevel) :?> LogLevel)
